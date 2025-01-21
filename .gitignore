@@ -1,0 +1,8 @@
+# Pycharm IDE files
+.idea
+# virtual environment files
+venv
+# gunicorn configuration file
+gunicorn.conf.py
+# database
+db.sqlite3
