@@ -8,3 +8,7 @@ gunicorn.conf.py
 db.sqlite3
 # locale compiled files
 django.mo
+# environment variables
+.env
+# python build system
+.eggs
