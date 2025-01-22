@@ -6,3 +6,5 @@ venv
 gunicorn.conf.py
 # database
 db.sqlite3
+# locale compiled files
+django.mo
