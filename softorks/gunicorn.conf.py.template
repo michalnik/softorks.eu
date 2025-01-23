@@ -1,0 +1,12 @@
+proc_name = "gunicorn:www"
+wsgi_app = "www.wsgi"
+reload = True
+reload_extra_files = ["xxx", "yyy"]
+bind = "127.0.0.1:8000"
+worker_class = "gevent"
+workers = 1
+worker_connections = 10
+timeout = 5
+accesslog = "xxx"
+errorlog = "yyy"
+loglevel = "warning"

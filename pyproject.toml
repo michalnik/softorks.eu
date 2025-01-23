@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools_scm]
+version_file = "softorks/www/__init__.py"
+
+[project]
+name = "website-softorks"
+description="WWW website of mine - softorks.eu and softarna.cz"
+dynamic = ["version"]
+authors = [
+    {name = "Michal Mládek", email = "michal.mladek.78@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["website", "internet"]
+classifiers = [
+    "Framework :: Django",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.10"',
+    "python-dotenv",
+    "django"
+]
+
+[project.optional-dependencies]
+dev = ["django-extensions"]
+prod = ["gunicorn[gevent]"]
+
+[project.urls]
+homepage = "https://softorks.eu"
+repository = "https://github.com/michal/softorks.eu"

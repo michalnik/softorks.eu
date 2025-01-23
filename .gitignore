@@ -2,8 +2,6 @@
 .idea
 # virtual environment files
 venv
-# gunicorn configuration file
-gunicorn.conf.py
 # database
 db.sqlite3
 # locale compiled files
@@ -13,3 +11,5 @@ django.mo
 # python build system
 .eggs
 *.egg-info
+dist
+build
