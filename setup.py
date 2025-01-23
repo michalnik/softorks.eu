@@ -10,6 +10,7 @@ setup(
         "write_to_template": '__version__ = "{version}"',
     },
     packages=find_packages(),
+    include_package_data=True,
     description="WWW website of mine - softorks.eu and softarna.cz",
     classifiers=[
         "Programming Language :: Python :: 3",
