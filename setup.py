@@ -2,9 +2,11 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name="softorks-and-softarna",
+    name="website-softorks",
     use_scm_version={
-        "write_to": "www/__init__.py",
+        "version_scheme": "post-release",
+        "local_scheme": "no-local-version",
+        "write_to": "www/www/__init__.py",
         "write_to_template": '__version__ = "{version}"',
     },
     packages=find_packages(),

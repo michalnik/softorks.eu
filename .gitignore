@@ -12,3 +12,4 @@ django.mo
 .env
 # python build system
 .eggs
+*.egg-info
