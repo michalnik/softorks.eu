@@ -1,7 +1,7 @@
 # softorks.eu | softarna.cz
 The project of my website itself.
 
-# Environment variables needed to set in file `www/.env`
+# Environment variables needed to set in file `softorks/.env`
 ## Development
 - `SECRET_KEY` **xxx**
 - `DEBUG` => **1**
@@ -14,6 +14,8 @@ The project of my website itself.
 - `DATABASE_NAME` => **xxx**
 - `STATIC_ROOT` => **xxx**
 
-## Before run in production you need to build some parts
+## Before you *build* a wheel
 1. compile locale translations - `python manage.py compilemessages`
-2. replace static files into static root - `python manage.py collectstatic`
+
+## After you *install* a wheel
+1. replace static files into static root - `python manage.py collectstatic`
