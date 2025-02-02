@@ -14,8 +14,4 @@ The project of my website itself.
 - `DATABASE_NAME` => **xxx**
 - `STATIC_ROOT` => **xxx**
 
-## Before you *build* a wheel
-1. compile locale translations - `python manage.py compilemessages`
-
-## After you *install* a wheel
-1. replace static files into static root - `python manage.py collectstatic`
+Please, place `gunicorn.conf.py` and `.env` files separately.
