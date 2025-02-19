@@ -25,7 +25,6 @@ classifiers = [
 ]
 dependencies = [
     "requests",
-    'importlib-metadata; python_version<"3.10"',
     "python-dotenv",
     "django",
     "django-extensions"
