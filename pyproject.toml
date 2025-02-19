@@ -37,4 +37,4 @@ prod = ["gunicorn[gevent]"]
 
 [project.urls]
 homepage = "https://softorks.eu"
-repository = "https://github.com/michal/softorks.eu"
+repository = "https://github.com/michalnik/softorks.eu"
