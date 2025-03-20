@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 from dotenv import load_dotenv
 import os
-from distutils import util
 from pathlib import Path
+from django.forms.fields import BooleanField
+
+bool_val = BooleanField()
 
 # it loads environment variables from `.env` file
 file_env_path = os.getenv("ENVVARS", ".env")
@@ -29,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(util.strtobool(os.getenv("DEBUG", "0")))
+DEBUG = bool_val.to_python(os.getenv("DEBUG", "0"))
 
 
 ALLOWED_HOSTS = [host.strip() for host in os.getenv("ALLOWED_HOSTS", "localhost").split(",")]
