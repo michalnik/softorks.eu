@@ -1,7 +1,9 @@
+# jupyter notebook
+.ipynb_checkpoints
 # Pycharm IDE files
 .idea
 # virtual environment files
-venv
+.venv
 # database
 db.sqlite3
 # locale compiled files

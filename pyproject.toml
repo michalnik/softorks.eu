@@ -25,17 +25,24 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "requests",
     "python-dotenv",
     "django",
-    "django-extensions"
+    "django-extensions",
 ]
 
 [project.license]
 file = "LICENSE"
 
 [project.optional-dependencies]
-dev = ["ipython", "build", "validate-pyproject"]
+dev = [
+    "httpx",
+    "pydantic",
+    "notebook",
+    "rich",
+    "ipython",
+    "build",
+    "validate-pyproject"
+]
 prod = ["gunicorn[gevent]"]
 
 [project.urls]
