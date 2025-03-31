@@ -9,11 +9,12 @@ where = ["."]
 version_file = "softorks/www/__init__.py"
 
 [project]
-name = "website-softorks"
+name = "softorks.eu"
 description="WWW website of mine - softorks.eu and softarna.cz"
 dynamic = ["version"]
 authors = [
-    {name = "Michal Mládek", email = "michal.mladek.78@gmail.com"}
+    {name = "Michal Mládek"},
+    {email = "michal.mladek.78@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.13"
@@ -30,8 +31,11 @@ dependencies = [
     "django-extensions"
 ]
 
+[project.license]
+file = "LICENSE"
+
 [project.optional-dependencies]
-dev = ["ipython"]
+dev = ["ipython", "build", "validate-pyproject"]
 prod = ["gunicorn[gevent]"]
 
 [project.urls]
