@@ -39,7 +39,7 @@ dev = [
     "pydantic",
     "notebook",
     "rich",
-    "ipython",
+    "ipython<9.0.0",
     "build",
     "validate-pyproject"
 ]
