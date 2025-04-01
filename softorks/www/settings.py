@@ -37,8 +37,11 @@ ALLOWED_HOSTS = [host.strip() for host in os.getenv("ALLOWED_HOSTS", "localhost"
 
 
 # Application definition
-
 INSTALLED_APPS = [
+    'activities',
+    'references',
+    'modeltranslation',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,9 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'django_extensions',
-    'activities',
-    'references'
 ]
 
 MIDDLEWARE = [

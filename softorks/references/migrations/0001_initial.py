@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('description', models.TextField()),
                 ('url', models.URLField()),
+                ('source_url', models.URLField()),
             ],
         ),
     ]

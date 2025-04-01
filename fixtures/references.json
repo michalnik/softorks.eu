@@ -1,0 +1,34 @@
+[
+{
+ "model": "references.reference",
+ "pk": 1,
+ "fields": {
+  "name": "Plánovač Cesty (Django Rest Framework)",
+  "name_cs": "Plánovač Cesty (Django Rest Framework)",
+  "name_en": "Route Planner (Django Rest Framework)",
+  "description": "Tento počin vznikl na popud jednoho potenciálního klienta z USA. Projekt byl odložen a tím pádem se ztratilo zadání. Když jsem se k tomu dostal, zbylo tedy jen torzo, to znamená **REST API**, v kterém je možné zadat začátek a konec cesty pomocí souřadnic. Výstupem je pak vygeneroná **HTML mapa** se znázorněnou cestou. Původně měla být výsledná cesta optimalizovaná s ohledem na spotřebu paliva a umístění benzinových čerpadel podél cesty. Bohužel vstupní data pro umístění benzinových čerpadel se mi ztratila a tím pádem se mi nepodařilo rekonstruovat zadání s optimalizací.",
+  "description_cs": "Tento počin vznikl na popud jednoho potenciálního klienta z USA. Projekt byl odložen a tím pádem se ztratilo zadání. Když jsem se k tomu dostal, zbylo tedy jen torzo, to znamená **REST API**, v kterém je možné zadat začátek a konec cesty pomocí souřadnic. Výstupem je pak vygeneroná **HTML mapa** se znázorněnou cestou. Původně měla být výsledná cesta optimalizovaná s ohledem na spotřebu paliva a umístění benzinových čerpadel podél cesty. Bohužel vstupní data pro umístění benzinových čerpadel se mi ztratila a tím pádem se mi nepodařilo rekonstruovat zadání s optimalizací.",
+  "description_en": "This project was initiated at the request of a potential client from the USA. However, the project was postponed, resulting in the loss of the original requirements. By the time I was able to revisit it, only a partial implementation remained - namely, a **REST API** that allows users to input the starting and ending points of a journey using coordinates. The output is a generated **HTML map** displaying the route. Originally, the final route was intended to be optimized based on fuel consumption and the locations of gas stations along the way. Unfortunately, I lost the input data related to gas station locations, making it impossible to reconstruct the requirements for optimization.",
+  "url": "https://route.softarna.cz/api/v1/",
+  "url_cs": "https://route.softarna.cz/api/v1/",
+  "url_en": "https://route.softarna.cz/api/v1/",
+  "source_url": "https://github.com/michalnik/route-planner"
+ }
+},
+{
+ "model": "references.reference",
+ "pk": 2,
+ "fields": {
+  "name": "Plánovač Cesty (Django Ninja)",
+  "name_cs": "Plánovač Cesty (Django Ninja)",
+  "name_en": "Route Planner (Django Ninja)",
+  "description": "Tohle je jen **jiná verze** [Plánovače cesty](https://github.com/michalnik/route-planner) tentokrát s **REST API** pomocí [Django Ninja](https://django-ninja.dev/). Je zde navíc [OpenAPI](https://www.openapis.org) se [Swaggerem](https://swagger.io) a díky jednoduchosti implementace i více endpointů. Nicméně využil jsem i [clean architekturu](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), jsou zde využité patterny jako **Service** nebo **Adapter**.",
+  "description_cs": "Tohle je jen **jiná verze** [Plánovače cesty](https://github.com/michalnik/route-planner) tentokrát s **REST API** pomocí [Django Ninja](https://django-ninja.dev/). Je zde navíc [OpenAPI](https://www.openapis.org) se [Swaggerem](https://swagger.io) a díky jednoduchosti implementace i více endpointů. Nicméně využil jsem i [clean architekturu](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), jsou zde využité patterny jako **Service** nebo **Adapter**.",
+  "description_en": "This is simply another version of the [Route Planner](https://github.com/michalnik/route-planner), this time implemented with a REST API using [Django Ninja](https://django-ninja.dev/). Additionally, it includes [OpenAPI](https://www.openapis.org) with [Swagger](https://swagger.io) and offers more endpoints due to the simplicity of implementation. Furthermore, I have applied a [clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), incorporating design patterns such as **Service** and **Adapter**.",
+  "url": "https://route.softarna.cz/ninja/v2/docs",
+  "url_cs": "https://route.softarna.cz/ninja/v2/docs",
+  "url_en": "https://route.softarna.cz/ninja/v2/docs",
+  "source_url": "https://github.com/michalnik/route-planner"
+ }
+}
+]

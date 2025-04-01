@@ -28,6 +28,8 @@ dependencies = [
     "python-dotenv",
     "django",
     "django-extensions",
+    "django-modeltranslation",
+    "markdown"
 ]
 
 [project.license]
