@@ -29,7 +29,8 @@ dependencies = [
     "django",
     "django-extensions",
     "django-modeltranslation",
-    "markdown"
+    "markdown",
+    "pydantic",
 ]
 
 [project.license]

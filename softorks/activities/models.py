@@ -7,3 +7,9 @@ class Activity(models.Model):
     title = models.CharField(max_length=255)
     issue_url = models.URLField(max_length=255)
     comment_url = models.URLField(max_length=255)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['created_on']),
+            models.Index(fields=['title']),
+        ]
