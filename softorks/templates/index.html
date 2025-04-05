@@ -102,16 +102,11 @@
         footer span.nav-lang {
             color: white;
         }
-        .box-infinite-scroll {
-            height: 15em;
-            overflow-y: auto;
-            border: 0;
-        }
         #github-activities [itemprop="dateCreated"] {
             color: white;
         }
         #github-activities [itemprop="url"] a {
-            text-decoration: none;
+            color: lime;
         }
     </style>
     <script
@@ -177,26 +172,20 @@
                     <li><a href="https://github.com/michalnik" target="_blank">GitHub</a></li>
                     <li><a href="https://www.linkedin.com/in/michal-ml%C3%A1dek-a4aa704b/" target="_blank">LinkedIn</a></li>
                 </ul>
-                <h5>Github aktivita</h5>
-                <div class="box-infinite-scroll">
-                    <div id="github-activities">
-                        <div itemscope itemtype="https://schema.org/Comment">
-                            <span itemprop="dateCreated">3.12.2025</span>
-                            <span itemprop="name"><a
-                                    data-bs-toggle="tooltip"
-                                    data-bs-title="[BUG] Unable to retrieve media file from URL in development"
-                                    href="https://github.com/vitalik/django-ninja/issues/1417#issuecomment-2718084512">[BUG] Unable to retrieve media file from URL in development</a></span>
-                            <span itemprop="url"><a href="https://github.com/vitalik/django-ninja/issues/1417" onmouseover="this.innerHTML = 'issue ->>>';" onmouseleave="this.innerHTML = 'issue ->';">issue -></a>
-                            </span>
-                        </div>
-                    </div>
-                    <!--<div
-                            hx-get="/activities?page=1"
-                            hx-trigger="intersect"
-                            hx-target="#github-activities"
-                            hx-swap="beforeend"
-                            hx-on="event.target.setAttribute('hx-get', event.detail.xhr.getResponseHeader('X-Next-Page'));"
-                    ></div>-->
+                <h5>Github aktivita
+                    <form size="5"
+                          hx-get="/activities/github/?page=1"
+                          hx-target="#github-activities"
+                    >
+                        <input type="search" name="search">
+                        <input type="submit" value="hledat">
+                    </form>
+                </h5>
+                <div
+                        id="github-activities"
+                        hx-get="/activities/github/"
+                        hx-trigger="load"
+                >
                 </div>
             </section>
             <section id="nav-tech-stack" class="tab-pane fade" role="tabpanel" aria-labelledby="nav-tech-stack-tab" tabindex="0">

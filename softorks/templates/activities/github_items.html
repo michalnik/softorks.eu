@@ -1,0 +1,23 @@
+{% for activity in activities %}
+<div
+        itemscope
+        itemtype="https://schema.org/Comment"{% if forloop.last and has_next %}
+        hx-get="{{ next_page_url }}"
+        hx-trigger="intersect once"
+        hx-target="#github-activities"
+        hx-swap="beforeend"
+{% endif %}>
+    <span itemprop="dateCreated">{{ activity.created_on }}</span>
+    <span itemprop="name"><a
+            data-bs-toggle="tooltip"
+            data-bs-title="{{ activity.title }}"
+            href="{{ activity.comment_url }}">{{ activity.title }}</a></span>
+    <span itemprop="url">
+        <a
+                data-bs-toggle="tooltip"
+                data-bs-title="comment: {{ activity.issue_url }}"
+                href="{{ activity.issue_url }}"
+        >comment</a>
+    </span>
+</div>
+{% endfor %}
