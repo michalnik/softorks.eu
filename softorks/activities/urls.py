@@ -13,7 +13,7 @@ class ActivityQuery(PageQuery):
 
 @Configure(paginate=True)
 def get_github_items(request: HttpRequest, query: ActivityQuery, paginator: SoftorksPaginator) -> HttpResponse:
-    queryset = Activity.objects.all()
+    queryset = Activity.objects.all().order_by('-created_on')
     if query.search:
         queryset = queryset.filter(Q(title__icontains=query.search) | Q(created_on__icontains=query.search))
     items_paginated = paginator(queryset, 5)

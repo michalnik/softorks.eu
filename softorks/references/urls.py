@@ -13,7 +13,7 @@ class ReferenceQuery(PageQuery):
 
 @Configure(paginate=True)
 def get_github_items(request: HttpRequest, query: ReferenceQuery, paginator: SoftorksPaginator) -> HttpResponse:
-    queryset = Reference.objects.all()
+    queryset = Reference.objects.all().order_by('-created_on')
     if query.search:
         queryset = queryset.filter(Q(name__icontains=query.search) | Q(description__icontains=query.search))
     items_paginated = paginator(queryset, 5)

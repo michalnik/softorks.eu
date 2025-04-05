@@ -5,7 +5,8 @@ from .models import Reference
 
 @admin.register(Reference)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ["name", "description", "get_url", "get_source_url"]
+    list_display = ["created_on", "name", "description", "get_url", "get_source_url"]
+    list_display_links = ["name"]
 
     @admin.display(description="URL")
     def get_url(self, obj):

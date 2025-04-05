@@ -3,6 +3,7 @@
  "model": "references.reference",
  "pk": 1,
  "fields": {
+  "created_on": "2025-03-01",
   "name": "Plánovač Cesty (Django Rest Framework)",
   "name_cs": "Plánovač Cesty (Django Rest Framework)",
   "name_en": "Route Planner (Django Rest Framework)",
@@ -19,6 +20,7 @@
  "model": "references.reference",
  "pk": 2,
  "fields": {
+  "created_on": "2025-03-02",
   "name": "Plánovač Cesty (Django Ninja)",
   "name_cs": "Plánovač Cesty (Django Ninja)",
   "name_en": "Route Planner (Django Ninja)",
@@ -35,16 +37,34 @@
  "model": "references.reference",
  "pk": 3,
  "fields": {
+  "created_on": "2025-01-01",
   "name": "Webová prezentace sofťárna.cz",
   "name_cs": "Webová prezentace sofťárna.cz",
   "name_en": "Web presentation softorks.eu",
-  "description": "Webová prezentace [sofťárna.cz](https:/softarna.cz). Najdete zde důležité informace o možnostech **spolupráce** se mnou. Kromě **tech stacku** a **základních dovedností**zde najdete i moji aktivitu na githubu - **komentáře** - a nakonec i **reference** na moje projekty na GitHubu.",
-  "description_cs": "Webová prezentace [sofťárna.cz](https:/softarna.cz). Najdete zde důležité informace o možnostech **spolupráce** se mnou. Kromě **tech stacku** a **základních dovedností**zde najdete i moji aktivitu na githubu - **komentáře** - a nakonec i **reference** na moje projekty na GitHubu.",
+  "description": "Webová prezentace [sofťárna.cz](https:/softarna.cz). Najdete zde důležité informace o možnostech **spolupráce** se mnou. Kromě **tech stacku** a **základních dovedností **zde najdete i moji aktivitu na githubu - **komentáře** - a nakonec i **reference** na moje projekty na GitHubu.",
+  "description_cs": "Webová prezentace [sofťárna.cz](https:/softarna.cz). Najdete zde důležité informace o možnostech **spolupráce** se mnou. Kromě **tech stacku** a **základních dovedností **zde najdete i moji aktivitu na githubu - **komentáře** - a nakonec i **reference** na moje projekty na GitHubu.",
   "description_en": "The website [softorks.eu](https://softorks.eu) contains important information about opportunities for **collaboration** with me. In addition to my **tech stack** and **core skills**, you’ll also find my activity on GitHub – including **comments** – and finally, **references** to my projects hosted on GitHub.",
   "url": "https://softarna.cz",
   "url_cs": "https://softarna.cz",
   "url_en": "https://softorks.eu",
   "source_url": "https://github.com/michalnik/softorks.eu"
+ }
+},
+{
+ "model": "references.reference",
+ "pk": 4,
+ "fields": {
+  "created_on": "2025-04-05",
+  "name": "Advent Of Code Solutions 2024",
+  "name_cs": "Advent Of Code Solutions 2024",
+  "name_en": "Advent Of Code Solutions 2024",
+  "description": "Určitě všichni znáte velice zajímavý [projekt](https://adventofcode.com) pro programátory, který jim zajišťuje **předvánoční zábavu** a zajímavé **algoritmické výzvy** ve zpracování dat. I já se letos pokouším, ve volném čase vyřešit **algoritmické hádanky**, tak jako ostatní špičkoví softwaroví inženýři.",
+  "description_cs": "Určitě všichni znáte velice zajímavý [projekt](https://adventofcode.com) pro programátory, který jim zajišťuje **předvánoční zábavu** a zajímavé **algoritmické výzvy** ve zpracování dat. I já se letos pokouším, ve volném čase vyřešit **algoritmické hádanky**, tak jako ostatní špičkoví softwaroví inženýři.",
+  "description_en": "You're probably all familiar with the fascinating [project](https://adventofcode.com) for programmers that offers **pre-Christmas fun** and engaging **algorithmic challenges** involving data processing. This year, I'm also trying to solve these **algorithmic puzzles** in my spare time – just like many top-tier software engineers out there.",
+  "url": "https://github.com/michalnik/advent-of-code",
+  "url_cs": "https://github.com/michalnik/advent-of-code",
+  "url_en": "https://github.com/michalnik/advent-of-code",
+  "source_url": "https://github.com/michalnik/advent-of-code"
  }
 }
 ]

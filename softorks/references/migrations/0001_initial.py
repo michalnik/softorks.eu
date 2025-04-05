@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
             name='Reference',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('created_on', models.DateField()),
                 ('name', models.CharField(max_length=100)),
                 ('description', models.TextField()),
                 ('url', models.URLField()),
@@ -22,6 +23,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'indexes': [
+                    models.Index(fields=['created_on'], name='references__created_d2f91e_idx'),
                     models.Index(fields=['name'], name='references__name_f29fb0_idx'),
                     models.Index(fields=['description'], name='references__descrip_9e804f_idx')
                 ],
