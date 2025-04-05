@@ -30,5 +30,21 @@
   "url_en": "https://route.softarna.cz/ninja/v2/docs",
   "source_url": "https://github.com/michalnik/route-planner"
  }
+},
+{
+ "model": "references.reference",
+ "pk": 3,
+ "fields": {
+  "name": "Webová prezentace sofťárna.cz",
+  "name_cs": "Webová prezentace sofťárna.cz",
+  "name_en": "Web presentation softorks.eu",
+  "description": "Webová prezentace [sofťárna.cz](https:/softarna.cz). Najdete zde důležité informace o možnostech **spolupráce** se mnou. Kromě **tech stacku** a **základních dovedností**zde najdete i moji aktivitu na githubu - **komentáře** - a nakonec i **reference** na moje projekty na GitHubu.",
+  "description_cs": "Webová prezentace [sofťárna.cz](https:/softarna.cz). Najdete zde důležité informace o možnostech **spolupráce** se mnou. Kromě **tech stacku** a **základních dovedností**zde najdete i moji aktivitu na githubu - **komentáře** - a nakonec i **reference** na moje projekty na GitHubu.",
+  "description_en": "The website [softorks.eu](https://softorks.eu) contains important information about opportunities for **collaboration** with me. In addition to my **tech stack** and **core skills**, you’ll also find my activity on GitHub – including **comments** – and finally, **references** to my projects hosted on GitHub.",
+  "url": "https://softarna.cz",
+  "url_cs": "https://softarna.cz",
+  "url_en": "https://softorks.eu",
+  "source_url": "https://github.com/michalnik/softorks.eu"
+ }
 }
 ]

@@ -20,5 +20,11 @@ class Migration(migrations.Migration):
                 ('url', models.URLField()),
                 ('source_url', models.URLField()),
             ],
+            options={
+                'indexes': [
+                    models.Index(fields=['name'], name='references__name_f29fb0_idx'),
+                    models.Index(fields=['description'], name='references__descrip_9e804f_idx')
+                ],
+            },
         ),
     ]

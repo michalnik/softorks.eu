@@ -7,3 +7,9 @@ class Reference(models.Model):
     description = models.TextField()
     url = models.URLField()
     source_url = models.URLField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['name']),
+            models.Index(fields=['description']),
+        ]

@@ -1,0 +1,22 @@
+{% load markdown %}
+{% for reference in references %}
+<div class="mb-5"{% if forloop.last and has_next %}
+        hx-get="{{ next_page_url }}"
+        hx-trigger="intersect once"
+        hx-target="#github-references"
+        hx-swap="beforeend"
+{% endif %}>
+    <span><a
+            data-bs-toggle="tooltip"
+            data-bs-title="{{ reference.url }}"
+            href="{{ reference.url }}"
+          >{{ reference.name }}</a>
+    </span>
+    <span>{{ reference.description | markdownify | safe }}</span>
+    <span>
+        <a
+                href="{{ reference.source_url }}"
+        >{{ reference.source_url }}</a>
+    </span>
+</div>
+{% endfor %}
