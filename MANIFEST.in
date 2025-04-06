@@ -1,1 +1,2 @@
 recursive-include softorks/locale *.mo
+recursive-exclude softorks *.ipynb

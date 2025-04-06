@@ -39,7 +39,6 @@ file = "LICENSE"
 [project.optional-dependencies]
 dev = [
     "httpx",
-    "pydantic",
     "notebook",
     "rich",
     "ipython<9.0.0",
