@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-08 17:41+0100\n"
+"POT-Creation-Date: 2025-04-06 08:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/index.html:8
+#: templates/index.html:11
 msgid "Softorks - custom software development"
 msgstr "Softorks - custom software development"
 
-#: templates/index.html:60 templates/index.html:115
+#: templates/index.html:134 templates/index.html:211
 msgid "Softorks"
 msgstr "Softorks"
 
-#: templates/index.html:61
+#: templates/index.html:135
 msgid "full stack programmer and software architect"
 msgstr "full stack programmer and software architect"
 
-#: templates/index.html:65
+#: templates/index.html:139
 msgid "about me"
 msgstr "about me"
 
-#: templates/index.html:66
+#: templates/index.html:140
 msgid "contact"
 msgstr "contact"
+
+#: templates/index.html:175
+msgid "Github activities"
+msgstr "Github activities"
+
+#: templates/index.html:181
+msgid "search"
+msgstr "search"
+
+#: templates/index.html:200
+msgid "References"
+msgstr "References"

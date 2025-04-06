@@ -172,13 +172,13 @@
                     <li><a href="https://github.com/michalnik" target="_blank">GitHub</a></li>
                     <li><a href="https://www.linkedin.com/in/michal-ml%C3%A1dek-a4aa704b/" target="_blank">LinkedIn</a></li>
                 </ul>
-                <h5>Github aktivita
-                    <form size="5"
+                <h5>{% trans 'Github activities' %}
+                    <form
                           hx-get="/activities/github/?page=1"
                           hx-target="#github-activities"
                     >
                         <input type="search" name="search">
-                        <input type="submit" value="hledat">
+                        <input type="submit" value="{% trans 'search' %}">
                     </form>
                 </h5>
                 <div
@@ -197,7 +197,7 @@
                     <li><a href="https://www.python.org">Python</a></li>
                     <li><a href="https://zeromq.org">ZeroMQ</a>, <a href="https://datatracker.ietf.org/doc/html/rfc6455">WebSockets</a>, <a href="https://grpc.io">gRPC</a></li>
                 </ul>
-                <h5>Reference</h5>
+                <h5>{% trans 'References' %}</h5>
                 <div
                         id="github-references"
                         hx-get="/references/github/"
