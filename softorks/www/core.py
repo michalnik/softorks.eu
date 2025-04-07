@@ -61,14 +61,14 @@ class Configure(typing.Generic[Query]):
 
         @wraps(func_view)
         def wrapper(request: HttpRequest, /, *args: typing.Any, **kwargs: typing.Any):
-            wrapper_params: set[HttpRequest | SoftorksPaginator] = {request}
+            wrapper_params: list[HttpRequest | SoftorksPaginator] = [request]
             if self.query is not None:
                 # mypy reads following line badly, saying it is not callable, but it is a constructor
                 query = self.query(request)  # type: ignore[operator]
-                wrapper_params.add(query)
+                wrapper_params.append(query)
                 if self.paginate:
                     paginator = SoftorksPaginator(request, query)
-                    wrapper_params.add(paginator)
+                    wrapper_params.append(paginator)
             rendered = func_view(*wrapper_params, *args, **kwargs)
             headers = None
             if self.paginate:
