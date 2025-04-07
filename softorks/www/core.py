@@ -33,6 +33,8 @@ class SoftorksPaginator(typing.Generic[Query]):
         return self.paginator
 
     def has_next(self) -> bool:
+        if self.paginator is None:
+            raise ValueError("Paginator has not been set")
         return False if self.query.page >= self.paginator.num_pages else True
 
     def get_next_hyperlink(self) -> str:
@@ -52,23 +54,25 @@ class Configure(typing.Generic[Query]):
         self.paginate = paginate
         self.content_type = content_type
 
-    def __call__(self, func_view: typing.Callable):
+    def __call__(self, func_view: typing.Callable):  # noqa[C901] McCabe 7
         for name, params in signature(func_view).parameters.items():
-            if name == "query" and issubclass(params.annotation, Query.__bound__):
+            if name == "query" and issubclass(params.annotation, PageQuery):
                 self.query = params.annotation
 
         @wraps(func_view)
         def wrapper(request: HttpRequest, /, *args: typing.Any, **kwargs: typing.Any):
-            wrapper_params = [request]
+            wrapper_params: set[HttpRequest | SoftorksPaginator] = {request}
             if self.query is not None:
-                query = self.query(request)
-                wrapper_params.append(query)
+                # mypy reads following line badly, saying it is not callable, but it is a constructor
+                query = self.query(request)  # type: ignore[operator]
+                wrapper_params.add(query)
                 if self.paginate:
                     paginator = SoftorksPaginator(request, query)
-                    wrapper_params.append(paginator)
+                    wrapper_params.add(paginator)
             rendered = func_view(*wrapper_params, *args, **kwargs)
             headers = None
             if self.paginate:
-                headers = dict((('X-Next-Page', paginator.get_next_hyperlink()),)) if paginator.has_next() else None
+                headers = dict((("X-Next-Page", paginator.get_next_hyperlink()),)) if paginator.has_next() else None
             return HttpResponse(rendered, content_type=self.content_type, headers=headers)
+
         return wrapper
