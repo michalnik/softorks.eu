@@ -1,2 +1,3 @@
 recursive-include softorks/locale *.mo
 recursive-exclude softorks *.ipynb
+exclude softorks/mypy.ini
