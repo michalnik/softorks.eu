@@ -12,12 +12,12 @@
     <span itemprop="name"><a
             data-bs-toggle="tooltip"
             data-bs-title="{{ activity.title }}"
-            href="{{ activity.comment_url }}">{{ activity.title }}</a></span>
+            href="{{ activity.issue_url }}">{{ activity.title }}</a></span>
     <span itemprop="url">
         <a
                 data-bs-toggle="tooltip"
-                data-bs-title="comment: {{ activity.issue_url }}"
-                href="{{ activity.issue_url }}"
+                data-bs-title="comment: {{ activity.comment_url }}"
+                href="{{ activity.comment_url }}"
         >{% trans 'comment' %}</a>
     </span>
 </div>
