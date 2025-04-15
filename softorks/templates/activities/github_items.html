@@ -1,24 +1,21 @@
 {% load i18n %}
 {% for activity in activities %}
-<div
-        itemscope
-        itemtype="https://schema.org/Comment"{% if forloop.last and has_next %}
+<div{% if forloop.last and has_next %}
         hx-get="{{ next_page_url }}"
         hx-trigger="intersect once"
         hx-target="#github-activities"
         hx-swap="beforeend"
 {% endif %}>
-    <span itemprop="dateCreated">{{ activity.created_on }}</span>
-    <span itemprop="name"><a
+    <span>{{ activity.created_on }}</span>
+    <span><a
             data-bs-toggle="tooltip"
             data-bs-title="{{ activity.title }}"
-            href="{{ activity.issue_url }}">{{ activity.title }}</a></span>
-    <span itemprop="url">
-        <a
-                data-bs-toggle="tooltip"
-                data-bs-title="comment: {{ activity.comment_url }}"
-                href="{{ activity.comment_url }}"
-        >{% trans 'comment' %}</a>
+            href="{{ activity.issue_url }}">{{ activity.title }}</a>
+    </span>
+    <span><a
+            data-bs-toggle="tooltip"
+            data-bs-title="comment: {{ activity.comment_url }}"
+            href="{{ activity.comment_url }}">{% trans 'comment' %}</a>
     </span>
 </div>
 {% endfor %}
