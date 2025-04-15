@@ -6,13 +6,13 @@
         hx-target="#github-activities"
         hx-swap="beforeend"
 {% endif %}>
-    <span>{{ activity.created_on }}</span>
+    <span class="activity-date">{{ activity.created_on }}</span>
     <span><a
             data-bs-toggle="tooltip"
             data-bs-title="{{ activity.title }}"
             href="{{ activity.issue_url }}">{{ activity.title }}</a>
     </span>
-    <span><a
+    <span class="activity-url"><a
             data-bs-toggle="tooltip"
             data-bs-title="comment: {{ activity.comment_url }}"
             href="{{ activity.comment_url }}">{% trans 'comment' %}</a>
