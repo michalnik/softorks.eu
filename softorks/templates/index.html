@@ -175,11 +175,16 @@
                 </ul>
                 <h5>{% trans 'Github activities' %}
                     <form
+                          class="row g-1"
                           hx-get="/activities/github/?page=1"
                           hx-target="#github-activities"
                     >
-                        <input type="search" name="search">
-                        <input type="submit" value="{% trans 'search' %}">
+                        <div class="col-sm-2">
+                            <input class="form-control form-control-sm" type="search" name="search" placeholder="{% trans 'text in comment`s title' %}">
+                        </div>
+                        <div class="col-sm">
+                            <button class="btn btn-light btn-sm" type="submit">{% trans 'search' %}</button>
+                        </div>
                     </form>
                 </h5>
                 <div

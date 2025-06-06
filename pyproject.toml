@@ -41,10 +41,8 @@ file = "LICENSE"
 
 [project.optional-dependencies]
 dev = [
-    "httpx",
-    "notebook",
     "rich",
-    "ipython<9.0.0",
+    "ipython",
     "build",
     "validate-pyproject",
     "pre-commit",

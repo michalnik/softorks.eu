@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-06 09:23+0200\n"
+"POT-Creation-Date: 2025-06-06 17:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/activities/github_items.html:20
+#: templates/activities/github_items.html:18
 msgid "comment"
 msgstr "comment"
 
@@ -26,30 +26,34 @@ msgstr "comment"
 msgid "Softorks - custom software development"
 msgstr "Softorks - custom software development"
 
-#: templates/index.html:134 templates/index.html:211
+#: templates/index.html:135 templates/index.html:218
 msgid "Softorks"
 msgstr "Softorks"
 
-#: templates/index.html:135
+#: templates/index.html:136
 msgid "full stack programmer and software architect"
 msgstr "full stack programmer and software architect"
 
-#: templates/index.html:139
+#: templates/index.html:140
 msgid "about me"
 msgstr "about me"
 
-#: templates/index.html:140
+#: templates/index.html:141
 msgid "contact"
 msgstr "contact"
 
-#: templates/index.html:175
+#: templates/index.html:176
 msgid "Github activities"
 msgstr "Github activities"
 
-#: templates/index.html:181
+#: templates/index.html:183
+msgid "text in comment`s title"
+msgstr "text in comment`s title"
+
+#: templates/index.html:186
 msgid "search"
 msgstr "search"
 
-#: templates/index.html:200
+#: templates/index.html:207
 msgid "References"
 msgstr "References"
