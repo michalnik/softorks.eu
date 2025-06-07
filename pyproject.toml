@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 where = ["."]
 
 [tool.setuptools_scm]
-version_file = "softorks/www/__init__.py"
+version_file = "softorks/softorks/__init__.py"
 
 [project]
 name = "softorks.eu"
@@ -41,8 +41,10 @@ file = "LICENSE"
 
 [project.optional-dependencies]
 dev = [
+    "httpx",
     "rich",
     "ipython",
+    "notebook",
     "build",
     "validate-pyproject",
     "pre-commit",

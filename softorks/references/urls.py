@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from django.http import HttpRequest
 from django.db.models import Q
 
-from www.core import PageQuery, SoftorksPaginator, Configure
+from softorks.core import PageQuery, SoftorksPaginator, Configure
 from .models import Reference
 
 
