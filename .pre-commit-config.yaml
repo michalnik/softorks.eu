@@ -1,4 +1,4 @@
-exclude: '/tests/|/migrations/|/fixtures/'
+exclude: '/tests/|/migrations/|/fixtures/|.min.css|.min.js|.css.map|js.map'
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
