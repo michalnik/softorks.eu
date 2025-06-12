@@ -193,9 +193,39 @@ function htmlElementsMatrix(matrixColumnIds: Array[Number], elementToShow: HTMLE
     window.document.body.appendChild(bearer);
 }
 function startMatrix() {
-    const mainDiv = window.document.getElementById("main");
-    window.document.body.removeChild(mainDiv);
-    matrix(mainDiv);
+    if (getCookie("matrixed") === undefined) {
+        setCookie("matrixed", true, 30 * 24 * 60 * 60);
+        const mainDiv = window.document.getElementById("main");
+        window.document.body.removeChild(mainDiv);
+        matrix(mainDiv);
+    }
+}
+function getCookie(name: string) {
+    const matches = document.cookie.match(
+        new RegExp(
+            "(?:^|; )" + name.replace(/([$?*|{}\[\]\\\/+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+function setCookie(name: string, value: any, maxAge: number) {
+    options = {
+        path: '/',
+        maxAge: maxAge
+    };
+    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    for (let [key, val] of Object.entries(options)) {
+        if (key === "maxAge") {
+            if (val === undefined) {
+                continue;
+            }
+            key = "max-age";
+        }
+        updatedCookie += "; " + key;
+        if (val !== true) {
+            updatedCookie += "=" + val;
+        }
+    }
+    document.cookie = updatedCookie;
 }
 setTimeout(
     () => startMatrix(),

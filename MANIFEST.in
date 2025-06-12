@@ -1,3 +1,4 @@
 recursive-include softorks/locale *.mo
 recursive-exclude softorks *.ipynb
+recursive-exclude softorks/static *.js.map *.css.map
 exclude softorks/mypy.ini
