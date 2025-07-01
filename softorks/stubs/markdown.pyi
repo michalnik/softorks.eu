@@ -1,3 +1,0 @@
-from typing import Any
-
-def markdown(text: str, **kwargs: Any) -> str: ...

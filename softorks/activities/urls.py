@@ -1,9 +1,10 @@
-from django.urls import path
-from django.template.loader import get_template
-from django.http import HttpRequest
 from django.db.models import Q
+from django.http import HttpRequest
+from django.template.loader import get_template
+from django.urls import path
 
-from softorks.core import PageQuery, SoftorksPaginator, Configure
+from softorks.core import Configure, PageQuery, SoftorksPaginator
+
 from .models import Activity
 
 

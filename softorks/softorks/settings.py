@@ -10,13 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from dotenv import load_dotenv
 import os
 from pathlib import Path
-from django.forms.fields import BooleanField
-import django_stubs_ext
 
-django_stubs_ext.monkeypatch()
+from django.forms.fields import BooleanField
+from dotenv import load_dotenv
+
+try:
+    import django_stubs_ext
+
+    django_stubs_ext.monkeypatch()
+except ImportError:
+    # production environment
+    pass
+
 bool_val = BooleanField()
 
 # it loads environment variables from `.env` file
