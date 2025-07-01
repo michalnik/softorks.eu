@@ -16,10 +16,10 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, reverse, include
-from django.views.generic import TemplateView
 from django.contrib.sitemaps import Sitemap
 from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path, reverse
+from django.views.generic import TemplateView
 
 
 class StaticViewSitemap(Sitemap):

@@ -27,12 +27,9 @@ classifiers = [
 dependencies = [
     "python-dotenv",
     "django",
-    "django-stubs[compatible-mypy]",
-    "django-stubs-ext",
     "django-extensions",
     "django-modeltranslation",
     "markdown",
-    "types-markdown",
     "pydantic",
 ]
 
@@ -51,7 +48,11 @@ dev = [
     "black",
     "autoflake",
     "flake8",
-    "mypy"
+    "mypy",
+    "django-stubs[compatible-mypy]",
+    "django-stubs-ext",
+    "types-markdown",
+    "isort",
 ]
 prod = ["gunicorn[gevent]"]
 

@@ -1,9 +1,14 @@
-from django.urls import path
-from django.template.loader import get_template
-from django.http import HttpRequest
+import markdown
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import HttpRequest, HttpResponse
+from django.template.loader import get_template
+from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
-from softorks.core import PageQuery, SoftorksPaginator, Configure
+from softorks.core import Configure, PageQuery, SoftorksPaginator
+
 from .models import Reference
 
 
@@ -26,4 +31,18 @@ def get_github_items(request: HttpRequest, query: ReferenceQuery, paginator: Sof
     return template.render(context, request)
 
 
-urlpatterns = [path("github/", get_github_items)]
+@csrf_exempt
+@login_required
+@require_POST
+def get_markdown(request: HttpRequest) -> HttpResponse:
+    result = ""
+    text: str = request.POST.get("text", "")
+    if text:
+        result = markdown.markdown(text)
+    return HttpResponse(result, content_type="text/html", status=200)
+
+
+urlpatterns = [
+    path("github/", get_github_items),
+    path("markdownify/", get_markdown),
+]

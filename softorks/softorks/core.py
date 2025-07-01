@@ -1,10 +1,10 @@
 import typing
-from inspect import signature
-from pydantic import BaseModel, PositiveInt
 from functools import wraps
+from inspect import signature
 
-from django.http import HttpRequest, HttpResponse, QueryDict
 from django.core.paginator import Paginator
+from django.http import HttpRequest, HttpResponse, QueryDict
+from pydantic import BaseModel, PositiveInt
 
 
 class PageQuery(BaseModel):
