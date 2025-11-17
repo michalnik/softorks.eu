@@ -18,7 +18,7 @@ class MarkdownPreviewWidget(forms.Textarea):
         style="flex: 1; padding-left: 10px; overflow: auto; border: 1px solid #ddd; min-height: 150px;"
         >{markdown}</div>
         """.format(
-            field_id=attrs["id"], markdown=markdown.markdown(value)
+            field_id=attrs["id"], markdown=markdown.markdown(value) if value is not None else ""
         )
         return mark_safe(
             f"""<div style="display: flex; gap: 10px; align-items: flex-start; width: 100%;">
