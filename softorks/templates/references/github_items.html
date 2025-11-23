@@ -18,4 +18,7 @@
     <span><a href="{{ reference.source_url }}">{{ reference.source_url }}</a>
     </span>
 </div>
+{% if not forloop.last %}
+    <hr style="color: white !important;">
+{% endif %}
 {% endfor %}
