@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 17:25+0200\n"
+"POT-Creation-Date: 2025-12-04 19:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,34 +27,38 @@ msgstr "komentář"
 msgid "Softorks - custom software development"
 msgstr "Sofťárna - vývoj software na zakázku"
 
-#: templates/index.html:135 templates/index.html:218
+#: templates/index.html:128 templates/index.html:223
 msgid "Softorks"
 msgstr "Sofťárna"
 
-#: templates/index.html:136
+#: templates/index.html:129
 msgid "full stack programmer and software architect"
 msgstr "full stack programátor a softwarový architekt"
 
-#: templates/index.html:140
+#: templates/index.html:133
 msgid "about me"
 msgstr "o mně"
 
-#: templates/index.html:141
+#: templates/index.html:134
 msgid "contact"
 msgstr "kontakt"
 
-#: templates/index.html:176
+#: templates/index.html:169
 msgid "Github activities"
 msgstr "Github aktivity"
 
-#: templates/index.html:183
+#: templates/index.html:176
 msgid "text in comment`s title"
 msgstr "text v titulku komentáře"
 
-#: templates/index.html:186
+#: templates/index.html:179 templates/index.html:209
 msgid "search"
 msgstr "hledej"
 
-#: templates/index.html:207
+#: templates/index.html:199
 msgid "References"
 msgstr "Reference"
+
+#: templates/index.html:206
+msgid "activity name and description"
+msgstr "jméno aktivity a popis"

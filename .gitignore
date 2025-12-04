@@ -4,6 +4,8 @@
 .idea
 # virtual environment files
 .venv
+# pyenv
+.python-version
 # database
 db.sqlite3
 # locale compiled files
