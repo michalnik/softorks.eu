@@ -28,10 +28,10 @@ install: venv
 	@echo "Project installed in editable mode with dev dependencies"
 
 mypy:
-	(cd softorks && python -m mypy .)
+	PYTHONPATH=softorks ENVVARS=softorks/.env python -m mypy softorks
 
 isort:
-	(cd softorks && python -m isort .)
+	python -m isort --src softorks softorks
 
 lint: mypy isort
 
