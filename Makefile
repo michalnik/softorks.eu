@@ -1,8 +1,5 @@
 .PHONY: help venv install mypy isort lint clean
 
-PYTHON = .venv/bin/python
-PIP = .venv/bin/pip
-
 help:
 	@echo "Usage:"
 	@echo "  make venv        - It'll create virtual environment (.venv), if it has not been created still"
@@ -14,24 +11,27 @@ help:
 	@echo "  make run         - Running development server of Django"
 
 venv:
-	@if [ -d ".venv" ]; then \
-		echo "Virtual environment .venv does exist."; \
+	@if [ -e ".python-version" ]; then \
+		echo "Virtual environment does exist."; \
+		cat .python-version; \
 	else \
-		echo "I am creating virtual environment .venv with python3.13..."; \
-		python3.13 -m venv .venv; \
-		echo "Virtual environment created in .venv."; \
+		echo "I am creating virtual environment..."; \
+		pyenv virtualenv 3.13.5 softarna-3.13; \
+		echo "Virtual environment created."; \
+		pyenv local softarna-3.13; \
+		cat .python-version; \
 	fi
 
 install: venv
-	$(PIP) install --upgrade pip
-	$(PIP) install -e ".[dev]"
+	python -m pip install --upgrade pip
+	python -m pip install -e ".[dev]"
 	@echo "Project installed in editable mode with dev dependencies"
 
 mypy:
-	(cd softorks && ../$(PYTHON) -m mypy .)
+	(cd softorks && python -m mypy .)
 
 isort:
-	(cd softorks && ../$(PYTHON) -m isort .)
+	(cd softorks && python -m isort .)
 
 lint: mypy isort
 
@@ -41,7 +41,7 @@ clean:
 	@echo "Cleaned __pycache__ and .mypy_cache"
 
 migrate: venv
-	(cd softorks && ../$(PYTHON) manage.py migrate)
+	(cd softorks && python manage.py migrate)
 
 run: migrate
-	(cd softorks && ../$(PYTHON) manage.py runserver)
+	(cd softorks && python manage.py runserver)
