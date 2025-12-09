@@ -16,9 +16,9 @@ venv:
 		cat .python-version; \
 	else \
 		echo "I am creating virtual environment..."; \
-		pyenv virtualenv 3.13.5 softarna-3.13; \
+		pyenv virtualenv 3.13.5 softorks-3.13; \
 		echo "Virtual environment created."; \
-		pyenv local softarna-3.13; \
+		pyenv local softorks-3.13; \
 		cat .python-version; \
 	fi
 
