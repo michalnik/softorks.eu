@@ -38,7 +38,11 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="index.html"), name="homepage"),
     path("activities/", include("activities.urls")),
     path("references/", include("references.urls")),
-    path("robots.txt", TemplateView.as_view(template_name="robots.txt"), name="robots.txt"),
-    path(".well-known/security.txt", TemplateView.as_view(template_name="security.txt"), name="security.txt"),
+    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots.txt"),
+    path(
+        ".well-known/security.txt",
+        TemplateView.as_view(template_name="security.txt", content_type="text/plain"),
+        name="security.txt",
+    ),
     path("sitemap.xml", sitemap, {"sitemaps": {"static": StaticViewSitemap}}, name="sitemap"),
 ]
