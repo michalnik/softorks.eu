@@ -48,6 +48,7 @@ ALLOWED_HOSTS = [host.strip() for host in os.getenv("ALLOWED_HOSTS", "localhost"
 
 # Application definition
 INSTALLED_APPS = (["django_extensions"] if DEBUG is True else []) + [
+    "core",
     "activities",
     "references",
     "modeltranslation",
