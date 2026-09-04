@@ -11,7 +11,7 @@
     <title>{% trans 'Softorks - custom software development' %}</title>
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link
-            href="{% static 'css/bootstrap.min.css' %}"
+            href="{% static 'css/bootstrap.min.css' %}?v={{ version }}"
             rel="stylesheet"
     >
     <style>
@@ -108,17 +108,15 @@
         }
     </style>
     <script
-            src="{% static 'js/bootstrap.bundle.min.js' %}"
+            src="{% static 'js/bootstrap.bundle.min.js' %}?v={{ version }}"
             defer
     ></script>
     <script
-            src="{% static 'js/htmx.min.js' %}"
-            data-src="https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js"
+            src="{% static 'js/htmx.min.js' %}?v={{ version }}"
             defer
     ></script>
     <script
-            src="{% static 'js/babel.min.js' %}"
-            data-src="https://unpkg.com/@babel/standalone/babel.min.js"
+            src="{% static 'js/babel.min.js' %}?v={{ version }}"
             defer
     ></script>
 </head>
