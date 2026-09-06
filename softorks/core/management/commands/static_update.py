@@ -15,15 +15,54 @@ class Command(BaseCommand):
     help = "Update configured vendored static assets."
 
     def add_arguments(self, parser):
-        parser.add_argument(
-            "--lib-versions",
+        subparsers = parser.add_subparsers(dest="subcommand")
+        lib_versions_parser = subparsers.add_parser(
+            "lib-versions",
+            help="Print the versions cdnjs provides for a library.",
+        )
+        lib_versions_parser.add_argument(
+            "library",
             metavar="LIBRARY",
-            help="Print the versions cdnjs provides for LIBRARY.",
+            help="The cdnjs library name.",
+        )
+        range_options = lib_versions_parser.add_mutually_exclusive_group()
+        range_options.add_argument(
+            "--max-version",
+            metavar="MIN-MAX",
+            help="Print the maximum available version in the MIN-MAX range.",
+        )
+        range_options.add_argument(
+            "--in-range",
+            metavar="MIN-MAX",
+            help="Print the available versions in the MIN-MAX range.",
         )
 
     def handle(self, *args, **options):
-        library = options["lib_versions"]
-        if library:
+        if options["subcommand"] == "lib-versions":
+            library = options["library"]
+            maximum_version = options["max_version"]
+            versions_in_range = options["in_range"]
+            if maximum_version:
+                version_range = self.parse_version_range(maximum_version)
+                available_version = self.get_max_version(library, version_range)
+                self.stdout.write(
+                    self.style.SUCCESS(library)
+                    + self.style.NOTICE(" maximum available version number: ")
+                    + self.style.HTTP_SUCCESS(available_version)
+                )
+                return
+
+            if versions_in_range:
+                version_range = self.parse_version_range(versions_in_range)
+                versions = self.get_versions_in_range(library, version_range)
+                available_versions = ", ".join(versions)
+                self.stdout.write(
+                    self.style.SUCCESS(library)
+                    + self.style.NOTICE(f" available versions in range {versions_in_range}: ")
+                    + self.style.HTTP_SUCCESS(available_versions)
+                )
+                return
+
             versions = self.get_versions(library)
             available_versions = ", ".join(versions)
             self.stdout.write(
@@ -33,7 +72,59 @@ class Command(BaseCommand):
             )
             return
 
-    def get_versions(self, library: str) -> list[str]:
+    def get_max_version(self, library: str, version_range: dict[str, tuple[int, int, int]]) -> str:
+        """Return the greatest stable cdnjs version within ``version_range``."""
+        available_versions = self.get_versions_in_range(library, version_range)
+        if not available_versions:
+            raise CommandError(f"No available {library!r} version matches the requested range.")
+        return max(
+            available_versions,
+            key=self.parse_version_number,
+        )
+
+    def get_versions_in_range(self, library: str, version_range: dict[str, tuple[int, int, int]]) -> list[str]:
+        minimum = version_range["min"]
+        maximum = version_range["max"]
+        if minimum >= maximum:
+            raise CommandError("The minimum version must be lower than the maximum version.")
+
+        return [
+            version
+            for version in self.get_versions(library)
+            if self.is_stable_version(version) and minimum <= self.parse_version_number(version) < maximum
+        ]
+
+    def parse_version_range(self, value: str) -> dict[str, tuple[int, int, int]]:
+        """Parse a MIN-MAX command-line value into an inclusive/exclusive range."""
+        minimum, separator, maximum = value.partition("-")
+        if not separator or not minimum or not maximum:
+            raise CommandError("The version range must have the format MIN-MAX.")
+        return {
+            "min": self.parse_version_number(minimum),
+            "max": self.parse_version_number(maximum),
+        }
+
+    @staticmethod
+    def is_stable_version(value: str) -> bool:
+        return len(value.split(".")) == 3 and all(part.isdigit() for part in value.split("."))
+
+    @staticmethod
+    def parse_version_number(value: str | None) -> tuple[int, int, int]:
+        if not isinstance(value, str):
+            raise CommandError("The library version must have the format X.Y or X.Y.Z.")
+
+        parts = value.split(".")
+        if len(parts) == 2:
+            parts.append("0")
+
+        if len(parts) != 3 or not all(part.isdigit() for part in parts):
+            raise CommandError("The library version must have the format X.Y or X.Y.Z.")
+
+        major, minor, patch = (int(part) for part in parts)
+        return major, minor, patch
+
+    @staticmethod
+    def get_versions(library: str) -> list[str]:
         """Return every version cdnjs publishes for ``library``."""
         url = VERSION_URL.format(library=quote(library, safe="-._"))
         request = Request(
@@ -50,4 +141,5 @@ class Command(BaseCommand):
         versions = payload.get("versions") if isinstance(payload, dict) else None
         if not isinstance(versions, list) or not all(isinstance(version, str) for version in versions):
             raise CommandError(f"cdnjs returned no valid version list for {library!r}.")
+
         return versions
