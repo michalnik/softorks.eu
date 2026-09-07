@@ -1,8 +1,11 @@
 import json
+from collections.abc import Iterator
+from typing import override
 from urllib.error import URLError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
+from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from core import VERSION_HASH
@@ -14,8 +17,13 @@ FILE_URL = "https://cdnjs.cloudflare.com/ajax/libs/{library}/{version}/{filename
 class Command(BaseCommand):
     help = "Update configured vendored static assets."
 
+    @override
     def add_arguments(self, parser):
         subparsers = parser.add_subparsers(dest="subcommand")
+        subparsers.add_parser(
+            "parse-settings",
+            help="Print the static-update library configuration.",
+        )
         lib_versions_parser = subparsers.add_parser(
             "lib-versions",
             help="Print the versions cdnjs provides for a library.",
@@ -37,7 +45,19 @@ class Command(BaseCommand):
             help="Print the available versions in the MIN-MAX range.",
         )
 
-    def handle(self, *args, **options):
+    @override
+    def handle(self, *args, **options):  # noqa: C901 (6)
+        if options["subcommand"] == "parse-settings":
+            for library, version_range, files in self.get_configured_libraries():
+                self.stdout.write(
+                    self.style.SUCCESS(library)
+                    + self.style.NOTICE(" version range: ")
+                    + self.style.SUCCESS(str(version_range))
+                    + self.style.NOTICE(" files: ")
+                    + self.style.SUCCESS(str(files))
+                )
+            return
+
         if options["subcommand"] == "lib-versions":
             library = options["library"]
             maximum_version = options["max_version"]
@@ -103,6 +123,31 @@ class Command(BaseCommand):
             "min": self.parse_version_number(minimum),
             "max": self.parse_version_number(maximum),
         }
+
+    def get_configured_libraries(  # noqa: C901 (7)
+        self,
+    ) -> Iterator[tuple[str, dict[str, tuple[int, int, int]], dict[str, str]]]:
+        """Yield library name, parsed range, and cdnjs-to-local file mappings."""
+        configured_libraries = getattr(settings, "STATIC_UPDATE_LIBRARIES", {})
+        if not isinstance(configured_libraries, dict):
+            raise CommandError("STATIC_UPDATE_LIBRARIES must be a mapping.")
+
+        for library, configuration in configured_libraries.items():
+            if not isinstance(library, str) or not library:
+                raise CommandError("Each static-update library name must be a non-empty string.")
+            if not isinstance(configuration, dict):
+                raise CommandError(f"The configuration for {library!r} must be a mapping.")
+
+            version_range = configuration.get("version_range")
+            files = configuration.get("files")
+            if not isinstance(version_range, str):
+                raise CommandError(f"The version range for {library!r} must be a string.")
+            if not isinstance(files, dict) or not all(
+                isinstance(source, str) and isinstance(destination, str) for source, destination in files.items()
+            ):
+                raise CommandError(f"The files for {library!r} must be a string mapping.")
+
+            yield library, self.parse_version_range(version_range), files
 
     @staticmethod
     def is_stable_version(value: str) -> bool:

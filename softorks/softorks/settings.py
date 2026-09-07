@@ -153,6 +153,29 @@ STATICFILES_DIRS = [
 STATIC_URL = "static/"
 STATIC_ROOT = os.getenv("STATIC_ROOT", None)
 
+# cdnjs file path -> destination relative to the project's static directory.
+STATIC_UPDATE_LIBRARIES = {
+    "bootstrap": {
+        "version_range": "5.3-6.0",
+        "files": {
+            "css/bootstrap.min.css": "css/bootstrap.min.css",
+            "js/bootstrap.bundle.min.js": "js/bootstrap.bundle.min.js",
+        },
+    },
+    "htmx": {
+        "version_range": "2.0-3.0",
+        "files": {
+            "htmx.min.js": "js/htmx.min.js",
+        },
+    },
+    "babel-standalone": {
+        "version_range": "7.0-8.0",
+        "files": {
+            "babel.min.js": "js/babel.min.js",
+        },
+    },
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

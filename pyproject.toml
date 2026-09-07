@@ -53,6 +53,7 @@ dev = [
     "django-stubs-ext",
     "types-markdown",
     "isort",
+    "basedpyright"
 ]
 prod = ["gunicorn[gevent]"]
 
