@@ -156,7 +156,7 @@ STATIC_ROOT = os.getenv("STATIC_ROOT", None)
 # cdnjs file path -> destination relative to the project's static directory.
 STATIC_UPDATE_LIBRARIES = {
     "bootstrap": {
-        "version_range": "5.3-6.0",
+        "version_range": "5.3.0-5.4.0",
         "files": {
             "css/bootstrap.min.css": "css/bootstrap.min.css",
             "js/bootstrap.bundle.min.js": "js/bootstrap.bundle.min.js",
@@ -169,7 +169,7 @@ STATIC_UPDATE_LIBRARIES = {
         },
     },
     "babel-standalone": {
-        "version_range": "7.0-8.0",
+        "version_range": "7.27.0-7.30.0",
         "files": {
             "babel.min.js": "js/babel.min.js",
         },

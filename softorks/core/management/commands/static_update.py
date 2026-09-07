@@ -1,5 +1,6 @@
 import json
 from collections.abc import Iterator
+from pathlib import Path
 from typing import override
 from urllib.error import URLError
 from urllib.parse import quote
@@ -91,6 +92,40 @@ class Command(BaseCommand):
                 + self.style.HTTP_SUCCESS(available_versions)
             )
             return
+
+        downloaded_files = self.download_configured_files()
+        for destination, content in downloaded_files.items():
+            destination.parent.mkdir(exist_ok=True)
+            destination.write_bytes(content)
+
+    def download_configured_files(self) -> dict[Path, bytes]:
+        """Download every configured file into memory without changing static files."""
+        configured_libraries = list(self.get_configured_libraries())
+        static_directory = Path(settings.STATICFILES_DIRS[0]).resolve()
+        destinations = {
+            destination: self.get_static_file_path(static_directory, destination)
+            for _, _, files in configured_libraries
+            for destination in files.values()
+        }
+
+        downloaded_files: dict[Path, bytes] = {}
+        for library, version_range, files in configured_libraries:
+            version = self.get_max_version(library, version_range)
+            for filename, destination in files.items():
+                downloaded_files[destinations[destination]] = self.download_file(
+                    library,
+                    version,
+                    filename,
+                )
+        return downloaded_files
+
+    @staticmethod
+    def get_static_file_path(static_directory: Path, destination: str) -> Path:
+        """Return a configured destination within the project static directory."""
+        static_file = (static_directory / destination).resolve()
+        if not static_file.is_relative_to(static_directory):
+            raise CommandError(f"Static destination {destination!r} is outside the static directory.")
+        return static_file
 
     def get_max_version(self, library: str, version_range: dict[str, tuple[int, int, int]]) -> str:
         """Return the greatest stable cdnjs version within ``version_range``."""
@@ -188,3 +223,22 @@ class Command(BaseCommand):
             raise CommandError(f"cdnjs returned no valid version list for {library!r}.")
 
         return versions
+
+    @staticmethod
+    def download_file(library: str, version: str, filename: str) -> bytes:
+        """Download one versioned cdnjs file."""
+        url = FILE_URL.format(
+            library=quote(library, safe="-._"),
+            version=quote(version, safe="-._"),
+            filename=quote(filename, safe="/-._"),
+        )
+        request = Request(
+            url,
+            headers={"User-Agent": f"softorks-static-update/{VERSION_HASH}"},
+        )
+
+        try:
+            with urlopen(request, timeout=30) as response:
+                return response.read()
+        except (URLError, TimeoutError) as error:
+            raise CommandError(f"Could not download {filename!r} from {library!r}: {error}") from error

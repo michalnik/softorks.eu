@@ -10,6 +10,9 @@
 db.sqlite3
 # locale compiled files
 django.mo
+# vendor static files
+softorks/static/js/*.js
+softorks/static/css/*.css
 # environment variables
 .env
 # python build system
